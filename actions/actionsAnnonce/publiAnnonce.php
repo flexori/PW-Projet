@@ -9,22 +9,26 @@ require('actions/database.php');
 if(isset($_POST['validate'])){
 
     //Vérifier si l'user a bien complété tous les champs
-    if(!empty($_POST['titre']) AND !empty($_POST['description']) AND !empty($_POST['prix']) AND !empty($_FILES['fichier'])){
+    if(!empty($_POST['titre']) AND !empty($_POST['description']) AND !empty($_POST['prix']) AND !empty($_FILES['fichier']) ){
         
         
         //Les données de l'user
         $annonce_titre = htmlspecialchars($_POST['titre']);
         $annonce_description = htmlspecialchars($_POST['description']);
         $annonce_prix = htmlspecialchars($_POST['prix']);
-        $annonce_fichier = htmlspecialchars($_FILES['fichier']);
+        $nom_fichier = $_FILES['fichier']['name'];
+        $answer_date = date('d/m/Y');
+        $idOfCategorie = htmlspecialchars($_POST['id']);
+            
 
-        $tmp_fichier = $_FILES['fichier'][$annonce_fichier];
-        $nom_destination = "./images/$annonce_fichier";
+        echo $nom_fichier;
+        $tmp_fichier = $_FILES['fichier']['tmp_name'];
+        $nom_destination = "images/$nom_fichier";
         move_uploaded_file($tmp_fichier,$nom_destination);
             
             //Insérer l'utilisateur dans la bdd
-            $insertAnnonceOnWebsite = $bdd->prepare('INSERT INTO annonces(titre, description, prix, image)VALUES(?, ?, ?, ?)');
-            $insertAnnonceOnWebsite->execute(array($annonce_titre, $annonce_description, $annonce_prix, $annonce_fichier));
+            $insertAnnonceOnWebsite = $bdd->prepare('INSERT INTO annonces(titre, description, prix, image, date, id_categorie, id_user)VALUES(?, ?, ?, ?, ?, ?, ?)');
+            $insertAnnonceOnWebsite->execute(array($annonce_titre, $annonce_description, $annonce_prix, $nom_fichier, $answer_date, $idOfCategorie, $_SESSION['id']));
 
             //Récupérer les informations de l'utilisateur
             $getInfosOfThisAnnonceReq = $bdd->prepare('SELECT id FROM annonces WHERE titre = ?');
@@ -32,9 +36,10 @@ if(isset($_POST['validate'])){
 
             $annonceInfos = $getInfosOfThisAnnonceReq->fetch();
 
-            $_SESSION['id'] = $annonceInfos['id'];
+            $annonce_id = $annonceInfos['id'];
 
-            header('Location: ../annonce.php?id='.$_SESSION['id']);
+            header('Location: ../annonce.php?id='.$annonce_id);
+            echo $nom_fichier;
             $errorMsg = "Votre annonce a bien été publiée.";
 
     }else{

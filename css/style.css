@@ -196,13 +196,23 @@ body {
 	border:none;
 	outline:none;
 	font-size:0.825em;
-	color: #777;
+	color: rgb(37, 28, 28);
 	background: rgba(255, 255, 255, 1);
+	padding: 8px;
+}
+#select-5 {
+	width: 90.333%;
+	border:none;
+	outline:none;
+	font-size:0.825em;
+	color: #777;
+	background: rgb(203, 243, 180);
 	padding: 8px;
 }
 .drp-dwn option{
 	padding: 10px 0;
 }
+
 /*drp-dwn*/
 .txt-right{
 	float: right;

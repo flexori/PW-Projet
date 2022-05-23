@@ -9,7 +9,7 @@ include("actions/actionsCategorie/allCategories.php");
 <div class="ser-main">
 	<h4>Nos annonces</h4>
 	<div class="ser-para">
-	<p>Qsi turpis, pellentesque at ultrices in, dapibus in magna. Nunc easi diam risus, placerat ut scelerisque et,sus cipit eu ante. Nullam vitae dolor ullcper felises cursus gravida. Cras felis elit, pellentesqi amet. sus cipit eu ante. </p>
+	<p>Voici la liste de toutes les annonces du site.</p>
 	</div>
     
 	<?php 
