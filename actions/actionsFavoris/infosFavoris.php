@@ -11,7 +11,6 @@ INNER JOIN favoris ON annonces.id = favoris.id_annonce )
 WHERE annonces.id_user=?');
 $getCount->execute(array($idOfUser));
 
-
 }
 
 

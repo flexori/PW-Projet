@@ -154,10 +154,11 @@ body {
 	color: #777777;
 }
 .search input[type="submit"] {
-	right:38%;
+	left:100%;
+	top: 0%;
 	font-size:0.825em;
 	position: absolute;
-	width: 8.333%;
+	width: 40.333%;
 	letter-spacing:0px;
 	line-height: 1.5em;
 	border: none;

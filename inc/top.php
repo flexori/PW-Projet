@@ -17,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 include("actions/actionsUser/loginAction.php");
 include("actions/actionsCategorie/allCategories.php");
-
+include("actions/actionsAnnonce/selectAnnonces.php");
 ?>
 <div class="wrap">
 <div class="header">
@@ -65,22 +65,30 @@ include("actions/actionsCategorie/allCategories.php");
 	<div class="search">
 	  <form>
 		<input type="text" value="tapez votre recherche" >
-		<input type="submit" value="Chercher" class="pad-w3l-search" name="validate">
+
 	  </form>
 	</div>
+	
 	<div class="drp-dwn">
-			<select class="custom-select" id="select-1" name="cat">
-			<option selected="selected">Catégorie</option>
+		
+	<form method="POST">
+	
+		<select class="custom-select" id="select-1" name="id">
+			<option value="">Catégorie</option>
 			<?php 
                 while($categorie = $getAllCategories->fetch()){
                     
                     ?>
-					<option><?= $categorie['nom']; ?></option>
+					<option value=<?= $categorie['id']; ?>><?= $categorie['nom']; ?></option>
                     <?php
                 }
     		?>
 		</select>
-
+		<div class="search">
+			<input type="submit" value="Chercher" class="pad-w3l-search" name="val">
+		</div>
+	  </form>
+	  <?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>'; } ?>
 	</div>
 	<div class="txt-right">
 		<h3><a href="">Recherche avancée</a></h3>

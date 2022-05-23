@@ -14,10 +14,12 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
     $getAllAnnonces = $bdd->query('SELECT * FROM annonces ORDER BY id');
     $getAllAnnonces->execute(array());
 }
-if(isset($_POST['cat'] )){
-    $nameOfCategorie = $_GET['cat'];
-    $getAllAnnonces = $bdd->prepare('SELECT * FROM annonces WHERE nom=? ORDER BY id');
-    $getAllAnnonces->execute(array($nameOfCategorie));
 
-    header('Location: ../categories.php?id='.id);
-}
+if(isset($_POST['val'] )){
+    	$idOfCategorie = htmlspecialchars($_POST['id']);
+    	$getAllAnnonces = $bdd->prepare('SELECT * FROM annonces WHERE nom=? ORDER BY id');
+    	$getAllAnnonces->execute(array($idOfCategorie));
+
+    	header('Location: ../categories.php?id='.$idOfCategorie);
+		}
+		
