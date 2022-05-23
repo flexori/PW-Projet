@@ -1,8 +1,8 @@
 <?php
-
+include("inc/top.php");
 include("actions/actionsUser/securite.php");
 include("actions/actionsUser/modifInfosUser.php");
-include("inc/top.php");
+
 ?>
 
 <!-- debut de la partie contenu -->
@@ -39,7 +39,7 @@ include("inc/top.php");
 				<div class="clear"> </div>
 				<div class="register-but">
 				   
-					   <input type="submit" value="Enregistrer" name="val">
+					   <input type="submit" value="Enregistrer" name="valModif">
 					   <div class="clear"> </div>
 				
 				</div>

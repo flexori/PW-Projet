@@ -4,7 +4,7 @@ if(session_id() == '') {
    }
    require('actions/database.php');
 //echo "test";
-if(isset($_POST['val'])){
+if(isset($_POST['valModif'])){
 
     //Vérifier si l'user a bien complété tous les champs
     if(!empty($_POST['prenom']) AND !empty($_POST['nom']) AND !empty($_POST['mail']) AND !empty($_POST['password'])){

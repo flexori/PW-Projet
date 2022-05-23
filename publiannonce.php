@@ -45,7 +45,10 @@ include("actions/actionsCategorie/allCategories.php");
 			<select class="custom-select" id="select-5" name="id">
 			<option value="">Catégorie</option>
 			<?php 
-                while($categorie = $getAllCategories->fetch()){
+			$getAllCategories = $bdd->query('SELECT * FROM categories ORDER BY id');
+			$getAllCategories->execute(array());
+				foreach($getAllCategories as $categorie ){
+                    
                     ?>
 					<option value=<?= $categorie['id']; ?>><?= $categorie['nom']; ?></option>
                     <?php

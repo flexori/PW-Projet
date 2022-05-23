@@ -15,7 +15,9 @@ include("actions/actionsUser/addFav.php");
 	<div class="text1-nav">
 		<ul>
 			<?php 
-                while($categorie = $getAllCategories->fetch()){
+			$getAllCategories = $bdd->query('SELECT * FROM categories ORDER BY id');
+			$getAllCategories->execute(array());
+			foreach($getAllCategories as $categorie ){
                     
                     ?>
 					<li><a href="categories.php?id=<?= $categorie['id']; ?>"><?= $categorie['nom']; ?></a></li>
@@ -54,7 +56,7 @@ include("actions/actionsUser/addFav.php");
 
 	<div class="grid">
 	<div class="grid-img">
-		<a href="annonce.php?id=<?= $annonce_id ?>"><img src="images/<?= $annonce_image ?>"  alt=""/></a>
+		<a href="annonce.php?id=<?= $annonce_id ?>"><img src="images/<?= $annonce_image ?>"  alt="" height="150" width="260"/></a>
 	</div>
 	<div class="grid-para">
 		<h2>Nouveau sur le site</h2>
@@ -76,7 +78,7 @@ include("actions/actionsUser/addFav.php");
                     
                     ?>
 					<div class="grid_1_of_3 images_1_of_3">
-					 <a href="annonce.php?id=<?= $annonceSix['id'] ?>"><img src="images/<?= $annonceSix['image']; ?>" alt="" height="70%"/></a>
+					 <a href="annonce.php?id=<?= $annonceSix['id'] ?>"><img src="images/<?= $annonceSix['image']; ?>" alt="" /></a>
 					 <a href="annonce.php"><h3><?= $annonceSix['titre']; ?></h3></a>
 			
 					<span class="price left"><sup><?= $annonceSix['prix']; ?>€</sup><sub></sub></span>

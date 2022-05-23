@@ -27,7 +27,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
                     ?>
 					<div class="ser-grid-list">
 					<h5><?= $favoris['titre']; ?></h5>
-					<img src="images/<?= $favoris['image']; ?>" alt="">
+					<img src="images/<?= $favoris['image']; ?>" alt="" height="150" width="260">
 					<p><?= $favoris['description']; ?></p>
 					<div class="btn top"><a href="annonce.php">Supprimer de mes favoris</a></div>
 					</div>

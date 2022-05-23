@@ -15,7 +15,7 @@ include("actions/actionsAnnonce/selectAnnonces.php");
 						   <div id="products_example">
 							<div id="products">
 								<div class="slides_container">
-									<a href="annonce.php?id=<?= $annonce_id ?>" target="_blank"><img src="images/<?= $annonce_image ?>" alt=" " /></a>
+									<a href="annonce.php?id=<?= $annonce_id ?>" target="_blank"><img src="images/<?= $annonce_image ?>" alt=" " height="150" width="260"/></a>
 								
 								</div>
 								<ul class="pagination">
@@ -75,7 +75,7 @@ include("actions/actionsAnnonce/selectAnnonces.php");
                     
                     ?>
 					<div class="w3l-img">
-					<a href="annonce.php?id=<?= $annonceOneOfTree['id'] ?>"><img src="images/<?= $annonceOneOfTree['image']; ?>" alt=""/></a>
+					<a href="annonce.php?id=<?= $annonceOneOfTree['id'] ?>"><img src="images/<?= $annonceOneOfTree['image']; ?>" alt="" height="150" width="260"/></a>
 					</div>
                     <?php
                 }
@@ -96,7 +96,9 @@ include("actions/actionsAnnonce/selectAnnonces.php");
 	<div class="text1-nav">
 		<ul>
 			<?php 
-                while($categorie = $getAllCategories->fetch()){
+			$getAllCategories = $bdd->query('SELECT * FROM categories ORDER BY id');
+			$getAllCategories->execute(array());
+			foreach($getAllCategories as $categorie ){
                     
                     ?>
 					<li><a href="categories.php?id=<?= $categorie['id']; ?>"><?= $categorie['nom']; ?></a></li>

@@ -76,7 +76,9 @@ include("actions/actionsAnnonce/selectAnnonces.php");
 		<select class="custom-select" id="select-1" name="id">
 			<option value="">Catégorie</option>
 			<?php 
-                while($categorie = $getAllCategories->fetch()){
+			$getAllCategories = $bdd->query('SELECT * FROM categories ORDER BY id');
+			$getAllCategories->execute(array());
+				foreach($getAllCategories as $categorie ){
                     
                     ?>
 					<option value=<?= $categorie['id']; ?>><?= $categorie['nom']; ?></option>
@@ -88,7 +90,6 @@ include("actions/actionsAnnonce/selectAnnonces.php");
 			<input type="submit" value="Chercher" class="pad-w3l-search" name="val">
 		</div>
 	  </form>
-	  <?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>'; } ?>
 	</div>
 	<div class="txt-right">
 		<h3><a href="">Recherche avancée</a></h3>
