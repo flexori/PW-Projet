@@ -19,11 +19,13 @@ include("actions/actionsCategorie/allCategories.php");
           if(isset($_SESSION['auth'])){
             ?>
 			<div class="btn top"><a href="impression.php?id=<?= $_SESSION['id']; ?>">Imprimer mes favoris</a></div></div>
+			
+			<div class="btn top"><a href="favorisMail.php?id=<?= $_SESSION['id']; ?>">M'envoyer mes favoris par mail</a></div></div>
             <?php
           }
         ?>
 		
-	</div>
+	
 	
 <div class="sidebar">
 <div class="s-main">

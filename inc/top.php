@@ -94,7 +94,7 @@ include("actions/actionsAnnonce/selectAnnonces.php");
 	  </form>
 	</div>
 	<div class="txt-right">
-		<h3><a href="">Recherche avancée</a></h3>
+		<h3><a href="formTranche.php">Recherche avancée</a></h3>
 	</div>
 	<div class="clear"></div>
 </div>

@@ -1,11 +1,13 @@
 </div>
+</body>
+<footer>
 <div class="footer-bg">
 <div class="wrap">
 <div class="footer">
 	<div class="f_nav">
 		<ul>
 			<li><a href="#">A propos</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="contact.php">Contact</a></li>
 
 
 		</ul>
@@ -16,5 +18,6 @@
 </div>
 </div>
 </div>
-</body>
+<footer>
+
 </html>

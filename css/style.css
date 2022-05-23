@@ -550,6 +550,7 @@ background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3
 }
 /*footer*/
 .footer-bg{
+	
 	padding:3% 0;
 	background: #141E30;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
@@ -572,6 +573,7 @@ background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, F
 	color: #4e72d6;
 }
 .footer1{
+	
 	padding:3% 0 0;
 	text-align:center;
 }

@@ -5,6 +5,8 @@ if(session_id() == '') {
 require('actions/database.php');
 
 //Validation du formulaire
+
+if(isset($_SESSION['auth'])){
 if(isset($_POST['validate'])){
 
     //Vérifier si l'user a bien complété tous les champs
@@ -26,4 +28,7 @@ if(isset($_POST['validate'])){
         $errorMsg = "Veuillez compléter tous les champs...";
     }
 
+}
+}else{
+    $errorMsg = "Veuillez vous connecter pour envoyer une demande de contact.";
 }
