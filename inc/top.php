@@ -62,18 +62,20 @@ include("actions/actionsAnnonce/selectAnnonces.php");
 <div class="hdr-btm pad-w3l">
 <div class="hdr-btm-bg"></div>
 <div class="hdr-btm-left">
-	<div class="search">
-	  <form>
-		<input type="text" value="tapez votre recherche" >
 
-	  </form>
-	</div>
 	
 	<div class="drp-dwn">
 		
-	<form method="POST">
+	<form method="GET">
+
+	<div class="search">
+	  
+		<input type="text" name="search" placeholder="Ecrire ici..." >
+
+	 
 	
-		<select class="custom-select" id="select-1" name="id">
+
+		<select class="custom-select" id="select-1" name="tag">
 			<option value="">Catégorie</option>
 			<?php 
 			$getAllCategories = $bdd->query('SELECT * FROM categories ORDER BY id');
@@ -86,7 +88,7 @@ include("actions/actionsAnnonce/selectAnnonces.php");
                 }
     		?>
 		</select>
-		<div class="search">
+		
 			<input type="submit" value="Chercher" class="pad-w3l-search" name="val">
 		</div>
 	  </form>

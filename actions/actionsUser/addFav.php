@@ -13,3 +13,4 @@ if(isset($_POST['fav'])){
 
     header('Location: ../favoris.php?id='.$_SESSION['auth']);
 }
+

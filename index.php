@@ -1,8 +1,12 @@
 <?php
 include("inc/top.php");
+if(session_id() == '') {
+    session_start();
+   }
+require('actions/database.php');
 include("actions/actionsAnnonce/selectAnnonce.php");
 include("actions/actionsCategorie/allCategories.php");
-include("actions/actionsUser/addFav.php");
+
 ?>
 
 <!-- debut de la partie contenu -->
@@ -83,36 +87,14 @@ include("actions/actionsUser/addFav.php");
 			
 					<span class="price left"><sup><?= $annonceSix['prix']; ?>€</sup><sub></sub></span>
 				    
-					<?php
-					$getFavs = $bdd->prepare('SELECT * FROM favoris WHERE id_annonce = ?'); 
-					$getFavs->execute(array($annonceSix['id']));
-					$getFavs = $getFavs->fetchAll();
-					if(!$getFavs AND isset($_SESSION['auth'])){
-						?>
-						<form method="POST" > 
-							 
-							 <input type="submit" value="Ajouter aux favoris" name="fav" >
-							 
-						  
-						 </form>
-						
-				    
-					<?php
-						}else{
-						?>
-						<div class="space">
-							<br>
-						</div>
-						
-					<?php
-						}
-						?>
+					
 					 
 					
 				</div>
                     <?php
 						
                 }
+				
     ?>
 	
 	</div>

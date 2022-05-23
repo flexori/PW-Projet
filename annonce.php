@@ -3,7 +3,7 @@ include("inc/top.php");
 include("actions/actionsAnnonce/oneAnnonce.php");
 include("actions/actionsCategorie/allCategories.php");
 include("actions/actionsUser/addFav.php");
-include("actions/actionsAnnonce/selectAnnonces.php");
+
 ?>
 
 <!-- debut de la partie contenu -->

@@ -11,7 +11,7 @@ include("actions/actionsCategorie/allCategories.php");
 	<div class="ser-para">
 	<p>Voici la liste de toutes les annonces du site ou celles triées par catégorie.</p>
 	</div>
-    
+    <?php if(isset($error)){ echo '<p>'.$error.'</p>'; } ?>
 	<?php 
                 while($annonce = $getAllAnnonces->fetch()){
                     

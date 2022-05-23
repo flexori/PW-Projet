@@ -25,13 +25,15 @@ include("actions/actionsCategorie/allCategories.php");
 	<div class="text1-nav">
 		<ul>
 		<?php 
-                while($categorie = $getAllCategories->fetch()){
+			$getAllCategories = $bdd->query('SELECT * FROM categories ORDER BY id');
+			$getAllCategories->execute(array());
+			foreach($getAllCategories as $categorie ){
                     
                     ?>
 					<li><a href="categories.php?id=<?= $categorie['id']; ?>"><?= $categorie['nom']; ?></a></li>
                     <?php
                 }
-    	?>
+    		?>
 	    </ul>
 	</div>
 </div>
