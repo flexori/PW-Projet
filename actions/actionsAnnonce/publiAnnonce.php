@@ -9,7 +9,7 @@ require('actions/database.php');
 if(isset($_POST['validate'])){
 
     //Vérifier si l'user a bien complété tous les champs
-    if(!empty($_POST['titre']) AND !empty($_POST['description']) AND !empty($_POST['prix']) AND !empty($_FILES['fichier']) ){
+    if(!empty($_POST['titre']) AND !empty($_POST['description']) AND !empty($_POST['prix']) AND !empty($_FILES['fichier']) AND !empty($_POST['id'])){
         
         
         //Les données de l'user
@@ -39,7 +39,6 @@ if(isset($_POST['validate'])){
             $annonce_id = $annonceInfos['id'];
 
             header('Location: ../annonce.php?id='.$annonce_id);
-            echo $nom_fichier;
             $errorMsg = "Votre annonce a bien été publiée.";
 
     }else{

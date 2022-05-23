@@ -12,9 +12,17 @@ include("actions/actionsCategorie/allCategories.php");
 	<p>Qsi turpis, pellentesque at ultrices in, dapibus in magna. Nunc easi diam risus, placerat ut scelerisque et,sus cipit eu ante. Nullam vitae dolor ullcper felises cursus gravida. Cras felis elit, pellentesqi amet. sus cipit eu ante. </p>
 	</div>
 
-    <?php include("actions/actionsUser/favorisUser.php");?>
     
-	<div class="clear">	<div class="btn top"><a href="favoris_imprimer.php">Imprimer mes favoris</a></div></div>
+	<div class="clear">	
+	<?php include("actions/actionsUser/favorisUser.php");?>
+    <?php 
+          if(isset($_SESSION['auth'])){
+            ?>
+			<div class="btn top"><a href="impression.php?id=<?= $_SESSION['id']; ?>">Imprimer mes favoris</a></div></div>
+            <?php
+          }
+        ?>
+		
 	</div>
 	
 <div class="sidebar">
