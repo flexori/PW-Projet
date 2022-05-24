@@ -3,20 +3,20 @@ if(session_id() == '') {
     session_start();
    }
 require('actions/database.php');
-//echo "test";
+
 
         if(isset($_GET['id']) AND !empty($_GET['id'])){
 
-            //L'id de l'utilisateur
+
             $idOfAnnonce = $_GET['id'];
         
-            //Vérifier si l'utilisateur existe
+       
             $getOneAnnonce = $bdd->prepare('SELECT * FROM annonces WHERE id = ?');
             $getOneAnnonce->execute(array($idOfAnnonce));
         
             if($getOneAnnonce->rowCount() > 0){
                 
-                //Récupérer toutes les données de l'utilisateur
+             
                 $annonceInfos = $getOneAnnonce->fetch();
         
                 $annonce_id = $annonceInfos['id'];
