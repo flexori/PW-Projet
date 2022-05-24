@@ -2,7 +2,7 @@
 include("inc/top.php");
 include("actionsManager/actionsAdmin/securite.php");
 include("actionsManager/actionsInfos/infos.php");
-include("actionsManager/actionsModif/ajouteCat.php");
+include("actionsManager/actionsModif/ajouteAnnonce.php");
 ?>
 
 
@@ -19,13 +19,12 @@ include("actionsManager/actionsModif/ajouteCat.php");
                             <div class="card-body">
                             <?php 
                         if(isset($_SESSION['ad'])){
-                            $getCountCat = $bdd->prepare('SELECT DISTINCT count(*) as id FROM categories');
-                            $getCountCat->execute(array());}
+                            $getCountAnnonce = $bdd->prepare('SELECT DISTINCT count(*) as id FROM annonces');
+                            $getCountAnnonce->execute(array());}
                         ?>
-                                Voici les <?php print_r($getCountCat->fetchColumn()) ; ?> catégories.
+                                Voici les <?php print_r($getCountAnnonce->fetchColumn()) ; ?> annonces.
                                 <?php if(isset($errorMsge)){ echo '<p>'.$errorMsge.'</p>'; } ?>
                             </div>
-                            
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
@@ -38,7 +37,7 @@ include("actionsManager/actionsModif/ajouteCat.php");
                                         <tr>
                                             <th>Numéro</th>
                                             <th>Nom</th>
-                                            <th>Modifier le nom</th>
+                                            <th>Modifier</th>
                                             <th>Supprimer</th>
                                         </tr>
                                     </thead>
@@ -51,14 +50,16 @@ include("actionsManager/actionsModif/ajouteCat.php");
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <?php
-                                        while($cat = $getAllCat->fetch()){
+                                    <?php
+                                        while($annonce = $getAllAnnonces->fetch()){
                                         ?>
                                             <tr>
-                                                <td><?= $cat['id']; ?></td>
-                                                <td><?= $cat['nom']; ?></td>
-                                                <td><a href="modif_categorie.php?id=<?= $cat['id']; ?>">Modifier</a></td>    
-                                                <td><a href="delete_categorie.php?id=<?= $cat['id']; ?>">Supprimer</a></td>             
+                                                <td><?= $annonce['id']; ?></td>
+                                                <td><?= $annonce['titre']; ?></td>
+                                                <td><?= $annonce['description']; ?></td>
+                                                <td><?= $annonce['prix']; ?> €</td>
+                                                <td><a href="modif_annonce.php?id=<?= $annonce['id']; ?>">Modifier</a></td>
+                                                <td><a href="delete_annonce.php?id=<?= $annonce['id']; ?>">Supprimer</a></td>             
                                             </tr>
 					
                                         <?php
@@ -70,11 +71,66 @@ include("actionsManager/actionsModif/ajouteCat.php");
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Nom :</th>
-                                            <form method="POST">
-                                            <th><input type="text" name="nameOfCat" /> </th>
-                                            <th><input type="submit" name="ajoute" value="Ajouter cette catégorie"/></th>
-                                            <form>
+                                            <form method="POST" ENCTYPE="multipart/form-data"> 
+
+		
+		<br>
+		<div class="register-top-grid">
+
+			<h3>Publier une annonce</h3>
+
+			<div>
+				<span>Titre<label> :</label></span>
+				<input type="text" name="titre"> 
+			</div>
+            <br>
+			<div>
+				<span>Description<label> :</label></span>
+				<input type="text" name="description"> 
+			</div>
+            <br>
+			<div>
+				<span>Prix<label> (tapez seulement un chiffre):</label></span>
+				<input type="text" name="prix"> 
+			</div>
+            <br>
+        	<div>
+				<span>Image<label> :</label></span>
+				<input type="file" name="fichier" id="cfichier" />
+			</div>
+            <br>
+			<div class="clear"> </div>
+					  
+		</div>
+        <br>   
+		<div class="drp">
+
+			<select class="custom-select" id="select-5" name="id">
+			<option value="">Catégorie</option>
+			<?php 
+			$getAllCategories = $bdd->query('SELECT * FROM categories ORDER BY id');
+			$getAllCategories->execute(array());
+				foreach($getAllCategories as $categorie ){
+                    
+                    ?>
+					<option value=<?= $categorie['id']; ?>><?= $categorie['nom']; ?></option>
+                    <?php
+                }
+    		?>
+			</select>
+
+		</div>
+        <br>
+		<div class="clear"> </div>
+		<div class="register-but">
+				   
+			<input type="submit" value="Publier" name="validate">
+			<div class="clear"> </div>
+				
+		</div>
+	</form>
+    <br>
+    <?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>'; } ?>
                                         </tr>
                                     </thead>
                                     
@@ -82,7 +138,6 @@ include("actionsManager/actionsModif/ajouteCat.php");
                                 </table>
                                 
                                 </div>
-                                
                             </div>
                         </div>
                     </div>

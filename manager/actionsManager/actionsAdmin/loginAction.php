@@ -19,7 +19,7 @@ if(isset($_POST['validate'])){
         $checkIfUserExists->execute(array($user_mail));
 
         if($checkIfUserExists->rowCount() > 0){
-            echo "hoho";
+
             //Récupérer les données de l'utilisateur
             $usersInfos = $checkIfUserExists->fetch();
 
@@ -28,15 +28,14 @@ if(isset($_POST['validate'])){
             
                 //Authentifier l'utilisateur sur le site et récupérer ses données dans des variables globales sessions
                 $_SESSION['ad'] = true;
-                $_SESSION['id'] = $usersInfos['id'];
-                $_SESSION['prenom'] = $usersInfos['prenom'];
-                $_SESSION['nom'] = $usersInfos['nom'];
-                $_SESSION['mail'] = $usersInfos['mail'];
+                $_SESSION['idad'] = $usersInfos['id'];
+                $_SESSION['prenomad'] = $usersInfos['prenom'];
+                $_SESSION['nomad'] = $usersInfos['nom'];
+                $_SESSION['mailad'] = $usersInfos['mail'];
                 
-
                 //Rediriger l'utilisateur vers la page d'accueil
-                header('Location: ../manager/index.php');
-    
+                header('Location: index.php');
+                exit;
             }else{
                 $errorMsg = "Votre mot de passe est incorrect...";
             }

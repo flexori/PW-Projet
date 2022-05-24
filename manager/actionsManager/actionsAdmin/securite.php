@@ -2,6 +2,6 @@
 if(session_id() == '') {
     session_start();
    }
-if(!isset($_SESSION['auth'])){
-    header('Location: login.html');
+if(!isset($_SESSION['ad'])){
+    header('Location: login.php');
 }

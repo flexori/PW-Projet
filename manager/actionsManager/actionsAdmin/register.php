@@ -2,7 +2,7 @@
 if(session_id() == '') {
     session_start();
    }
-   require('actionsManager/database.php');
+require('actionsManager/database.php');
 //echo "test";
 
 //Validation du formulaire
@@ -36,14 +36,13 @@ if(isset($_POST['validate'])){
 
             //Authentifier l'utilisateur sur le site et récupérer ses données dans des variables globales sessions
             $_SESSION['ad'] = true;
-            $_SESSION['id'] = $usersInfos['id'];
-            $_SESSION['prenom'] = $usersInfos['prenom'];
-            $_SESSION['nom'] = $usersInfos['nom'];
-            $_SESSION['mail'] = $usersInfos['mail'];
-            $_SESSION['head'] = true;
+            $_SESSION['idad'] = $usersInfos['id'];
+            $_SESSION['prenomad'] = $usersInfos['prenom'];
+            $_SESSION['nomad'] = $usersInfos['nom'];
+            $_SESSION['mailad'] = $usersInfos['mail'];
 
 
-            header('Location: ../manager/login.php');
+            header('Location: ../manager/index.php');
         }else{
             $errorMsg = "L'utilisateur existe déjà sur le site";
         }

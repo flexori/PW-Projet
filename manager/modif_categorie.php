@@ -1,4 +1,5 @@
 <?php
+include("inc/top.php");
 require('actionsManager/actionsModif/modif_categorie.php');
 ?>
 
@@ -13,10 +14,6 @@ require('actionsManager/actionsModif/modif_categorie.php');
 	
 				<div class="register-top-grid">
 					<h3>Modifier les informations de la catégorie :</h3>
-					 <div>
-						<span>Nouveau numéro<label> :</label></span>
-						<input type="text" name="num"> 
-					 </div>
 					 <div>
 						<span>Nouveau nom<label> :</label></span>
 						<input type="text" name="nom"> 
@@ -36,3 +33,6 @@ require('actionsManager/actionsModif/modif_categorie.php');
 		   </div>
   <div class="clear"></div>
 </div>
+<?php
+include("inc/bottom.php");
+?>

@@ -1,5 +1,6 @@
 <?php
 include("inc/top.php");
+require('actionsManager/actionsModif/ajouteCat.php');
 ?>
 
 
@@ -7,10 +8,10 @@ include("inc/top.php");
             <!--  debut contenu -->
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Catégories</h1>
+                        <h1 class="mt-4">CatÃ©gories</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Catégories</li>
+                            <li class="breadcrumb-item active">CatÃ©gories</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
@@ -21,21 +22,23 @@ include("inc/top.php");
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Ajouter une catégorie
+                                Ajouter une catÃ©gorie
                             </div>
                             <div class="card-body">
                                 <table>
                                     <thead>
                                         <tr>
-                                            
                                             <th>Nom </th>
-                                            <th><input type="text" name="" value="" /> </th>
-                                            <th><input type="submit" name="" value="Ajouter cette catégorie" /></th>
+                                            <form method="POST" >
+                                            <th><input type="text" name="nameOfCat" value="" /> </th>
+                                            <th><input  type="submit" name="ajoute" value="Ajouter cette catÃ©gorie"/></th>
+                                            <form>
                                         </tr>
                                     </thead>
                                     
                                    
                                 </table>
+                                
                             </div>
                         </div>
                     </div>

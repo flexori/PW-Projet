@@ -1,6 +1,10 @@
 <?php
 include("inc/top.php");
-include("actionsManager/actionsInfos/infosCards.php");
+if(session_id() == '') {
+    session_start();
+   }
+require('actionsManager/database.php');
+require('actionsManager/actionsInfos/infos.php');
 ?>
 
 
@@ -9,18 +13,7 @@ include("actionsManager/actionsInfos/infosCards.php");
                 <main>
                     <?php 
                         if(isset($_SESSION['ad'])){
-                            $idOfUser = $_SESSION['ad'];
-                            $getCountAnnonces = $bdd->prepare('SELECT DISTINCT count(*) as id FROM annonces');
-                            $getCountAnnonces->execute(array());
-
-                            $getCountUsers = $bdd->prepare('SELECT DISTINCT count(*) as id FROM users');
-                            $getCountUsers->execute(array());
-
-                            $getCountCat = $bdd->prepare('SELECT DISTINCT count(*) as id FROM categories');
-                            $getCountCat->execute(array());
-
-                            $getCountAdmin = $bdd->prepare('SELECT DISTINCT count(*) as id FROM admins');
-                            $getCountAdmin->execute(array());
+                            
                         ?>
                             <div class="container-fluid px-4">
                         <h1 class="mt-4">Dashboard</h1>

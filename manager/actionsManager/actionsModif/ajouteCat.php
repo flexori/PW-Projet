@@ -2,9 +2,9 @@
 if(session_id() == '') {
     session_start();
    }
-   require('actionsManager/database.php');
+require('actionsManager/database.php');
 
-//echo "test";
+
 if(isset($_POST['ajoute'])){
 
     //Vérifier si l'user a bien complété tous les champs
@@ -21,11 +21,14 @@ if(isset($_POST['ajoute'])){
             $insertCatOnWebsite = $bdd->prepare('INSERT INTO categories(nom)VALUES(?)');
             $insertCatOnWebsite->execute(array($catNew));
 
-            header('Location: ../manager/list_categories.php');
+            $url = htmlspecialchars("list_categories.php");
+            echo '<script>window.location = "'.$url.'";</script>';
+
         }else{
             $errorMsg = "Cette catégorie existe déjà sur le site";
         }
-
+            
+        
     }else{
         $errorMsg = "Veuillez compléter tous les champs...";
     }

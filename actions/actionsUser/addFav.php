@@ -11,6 +11,6 @@ if(isset($_POST['fav'])){
     $insertFavOfUser->execute(array($_SESSION['id'], $idOfAnnonce));
     $errorMsge = "RATIO";
 
-    header('Location: ../favoris.php?id='.$_SESSION['auth']);
+    header('Location: ../favoris.php?id='.$_SESSION['id']);
 }
 

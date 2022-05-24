@@ -3,12 +3,13 @@
 require('actions/database.php');
 
 if(isset($_SESSION['auth'])){
-    $idOfUser = $_SESSION['auth'];
+    $idOfUser = $_SESSION['id'];
 
     //Vérifier si l'utilisateur existe
     $getCount = $bdd->prepare('SELECT DISTINCT count(*) as id FROM ( annonces
 INNER JOIN favoris ON annonces.id = favoris.id_annonce )
-WHERE annonces.id_user=?');
+WHERE favoris.id_user=?
+');
 $getCount->execute(array($idOfUser));
 
 }

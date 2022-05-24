@@ -8,11 +8,9 @@ require('actions/database.php');
 if(isset($_GET['id']) AND !empty($_GET['id'])){
     $idOfUser = $_GET['id'];
 
-    //Vérifier si l'utilisateur existe
-    $getAllFavoris = $bdd->prepare('
-    SELECT DISTINCT annonces.id, favoris.id, titre, description, prix, image, date, id_categorie FROM ( annonces
+    $getAllFavoris = $bdd->prepare('SELECT DISTINCT annonces.id, favoris.id, titre, description, prix, image, date, id_categorie FROM ( annonces
     INNER JOIN favoris ON annonces.id = favoris.id_annonce )
-    WHERE annonces.id_user=?
+    WHERE favoris.id_user=?
     GROUP BY annonces.id');
     $getAllFavoris->execute(array($idOfUser));
     $errorMsgf = "Aucun e trouvé";
