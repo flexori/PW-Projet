@@ -17,5 +17,5 @@ require('actionsManager/database.php');
             header('Location: ../manager/list_annonces.php');
 
         }else{
-            $errorMsg = "Aucune categorie trouvée";
+            $errorMsg = "Aucune annonce trouvée";
         }

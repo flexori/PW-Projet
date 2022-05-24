@@ -4,7 +4,6 @@ if(session_id() == '') {
    }
    require('actionsManager/database.php');
 
-//echo "test";
 if(isset($_POST['valModifAnnonce'])){
 
     //Vérifier si l'user a bien complété tous les champs
@@ -12,12 +11,10 @@ if(isset($_POST['valModifAnnonce'])){
         
         if(isset($_GET['id']) AND !empty($_GET['id'])){
         $idOfAnnonce = $_GET['id'];
-        //Les données de l'user
+
         $annonce_titre = htmlspecialchars($_POST['titre']);
         $annonce_description = htmlspecialchars($_POST['description']);
         $annonce_prix = htmlspecialchars($_POST['prix']);
-            
-            //Insérer l'utilisateur dans la bdd
 
             $req = $bdd->prepare('UPDATE annonces SET titre = :nvnum, description = :nv_nom, prix = :nv_prix WHERE id = :idCat');
             $req->execute(array(
@@ -28,8 +25,6 @@ if(isset($_POST['valModifAnnonce'])){
                 'idCat' => $idOfAnnonce
          
                 ));
-
-            //$bdd->exec('UPDATE users SET prenom='.$user_prenom.', nom='.$user_nom.', mail='.$user_mail.', password='.$user_password.' WHERE id='.$idOfUser);
         
             $url = htmlspecialchars("list_annonces.php");
             echo '<script>window.location = "'.$url.'";</script>';

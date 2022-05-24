@@ -6,7 +6,7 @@
 <div class="footer">
 	<div class="f_nav">
 		<ul>
-			<li><a href="#">A propos</a></li>
+			<li><a href="apropos.php">A propos</a></li>
 			<li><a href="contact.php">Contact</a></li>
 
 

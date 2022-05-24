@@ -3,14 +3,12 @@ if(session_id() == '') {
     session_start();
    }
 require('actionsManager/database.php');
-//echo "test";
 
 //Validation du formulaire
 if(isset($_POST['validate'])){
 
     //Vérifier si l'user a bien complété tous les champs
     if(!empty($_POST['prenom']) AND !empty($_POST['nom']) AND !empty($_POST['mail']) AND !empty($_POST['password']) AND !empty($_POST['passwordtwo'])){
-        
         
         //Les données de l'user
         $user_prenom = htmlspecialchars($_POST['prenom']);

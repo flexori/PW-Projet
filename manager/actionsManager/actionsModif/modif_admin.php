@@ -14,7 +14,7 @@ if(isset($_POST['valModifAdmin'])){
         $user_nom = htmlspecialchars($_POST['nom']);
         $user_mail = htmlspecialchars($_POST['mail']);
             
-            //Insérer l'utilisateur dans la bdd
+            //UPDATE l'utilisateur dans la bdd
 
             $req = $bdd->prepare('UPDATE admins SET prenom = :nv_prenom, nom = :nv_nom, mail = :nv_mail WHERE id = :idCat');
             $req->execute(array(
@@ -25,8 +25,6 @@ if(isset($_POST['valModifAdmin'])){
                 'idCat' => $idOfCat
          
                 ));
-
-            //$bdd->exec('UPDATE users SET prenom='.$user_prenom.', nom='.$user_nom.', mail='.$user_mail.', password='.$user_password.' WHERE id='.$idOfUser);
         
             $url = htmlspecialchars("list_admins.php");
             echo '<script>window.location = "'.$url.'";</script>';

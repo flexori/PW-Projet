@@ -10,14 +10,11 @@ if(isset($_POST['validate'])){
     //Vérifier si l'user a bien complété tous les champs
     if(!empty($_POST['prenom']) AND !empty($_POST['nom']) AND !empty($_POST['mail']) AND !empty($_POST['password']) AND !empty($_POST['passwordtwo'])){
         
-        
-        //Les données de l'user
         $user_prenom = htmlspecialchars($_POST['prenom']);
         $user_nom = htmlspecialchars($_POST['nom']);
         $user_mail = htmlspecialchars($_POST['mail']);
         $user_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        //Vérifier si l'utilisateur existe déjà sur le site
         $checkIfUserAlreadyExists = $bdd->prepare('SELECT nom FROM admins WHERE nom = ?');
         $checkIfUserAlreadyExists->execute(array($user_nom));
 

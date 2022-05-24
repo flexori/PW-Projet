@@ -6,8 +6,6 @@ include("actions/actionsCategorie/allCategories.php");
 require('actions/database.php');
 
 //Récupérer l'identifiant de l'utilisateur
-
-
 if(isset($_GET['id']) AND !empty($_GET['id'])){
     $idOfUser = $_GET['id'];
 

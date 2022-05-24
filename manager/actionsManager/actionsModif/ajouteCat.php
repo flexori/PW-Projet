@@ -11,13 +11,13 @@ if(isset($_POST['ajoute'])){
     if(!empty($_POST['nameOfCat'])){
         
         $catNew = htmlspecialchars($_POST['nameOfCat']);
-        //Les données de l'user
+
         $checkIfCatAlreadyExists = $bdd->prepare('SELECT nom FROM categories WHERE nom = ?');
         $checkIfCatAlreadyExists->execute(array($catNew));
 
         if($checkIfCatAlreadyExists->rowCount() == 0){
             
-            //Insérer l'utilisateur dans la bdd
+
             $insertCatOnWebsite = $bdd->prepare('INSERT INTO categories(nom)VALUES(?)');
             $insertCatOnWebsite->execute(array($catNew));
 
