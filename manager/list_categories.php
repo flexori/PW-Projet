@@ -3,6 +3,7 @@ include("inc/top.php");
 include("actionsManager/actionsAdmin/securite.php");
 include("actionsManager/actionsInfos/infos.php");
 include("actionsManager/actionsModif/ajouteCat.php");
+include("actionsManager/actionsInfos/infosNbAnnonceOfCat.php");
 ?>
 
 
@@ -38,6 +39,7 @@ include("actionsManager/actionsModif/ajouteCat.php");
                                         <tr>
                                             <th>Numéro</th>
                                             <th>Nom</th>
+                                            <th>Nombre d'annonce dans cette catégorie</th>
                                             <th>Modifier le nom</th>
                                             <th>Supprimer</th>
                                         </tr>
@@ -46,6 +48,7 @@ include("actionsManager/actionsModif/ajouteCat.php");
                                         <tr>
                                             <th>Numéro</th>
                                             <th>Nom</th>
+                                            <th>Nombre d'annonce dans cette catégorie</th>
                                             <th>Modifier</th>
                                             <th>Supprimer</th>
                                         </tr>
@@ -57,6 +60,9 @@ include("actionsManager/actionsModif/ajouteCat.php");
                                             <tr>
                                                 <td><?= $cat['id']; ?></td>
                                                 <td><?= $cat['nom']; ?></td>
+                                                <td><?php $getCountAnnonceOfCat->execute(array($cat['id']));
+                                                    print_r($getCountAnnonceOfCat->fetchColumn()) ;
+                                                ?></td>
                                                 <td><a href="modif_categorie.php?id=<?= $cat['id']; ?>">Modifier</a></td>    
                                                 <td><a href="delete_categorie.php?id=<?= $cat['id']; ?>">Supprimer</a></td>             
                                             </tr>

@@ -2,7 +2,7 @@
 include("inc/top.php");
 include("actionsManager/actionsAdmin/securite.php");
 include("actionsManager/actionsInfos/infos.php");
-include("actionsManager/actionsModif/ajouteMembre.php");
+include("actionsManager/actionsModif/ajouteAdmin.php");
 ?>
 
 
@@ -17,7 +17,7 @@ include("actionsManager/actionsModif/ajouteMembre.php");
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                Voici les <?php print_r($getCountUsers->fetchColumn()) ; ?> membres.
+                                Voici les <?php print_r($getCountAdmin->fetchColumn()) ; ?> membres.
                                 <?php if(isset($errorMsge)){ echo '<p>'.$errorMsge.'</p>'; } ?>
                             </div>
                         </div>
@@ -50,15 +50,15 @@ include("actionsManager/actionsModif/ajouteMembre.php");
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                        while($membre = $getAllMembres->fetch()){
+                                        while($admin = $getAllAdmins->fetch()){
                                         ?>
                                             <tr>
-                                                <td><?= $membre['id']; ?></td>
-                                                <td><?= $membre['prenom']; ?></td>
-                                                <td><?= $membre['nom']; ?></td>
-                                                <td><?= $membre['mail']; ?></td>
-                                                <td><a href="modif_membre.php?id=<?= $membre['id']; ?>">Modifier</a></td>
-                                                <td><a href="delete_membre.php?id=<?= $membre['id']; ?>">Supprimer</a></td>             
+                                                <td><?= $admin['id']; ?></td>
+                                                <td><?= $admin['prenom']; ?></td>
+                                                <td><?= $admin['nom']; ?></td>
+                                                <td><?= $admin['mail']; ?></td>
+                                                <td><a href="modif_admin.php?id=<?= $admin['id']; ?>">Modifier</a></td>
+                                                <td><a href="delete_admin.php?id=<?= $admin['id']; ?>">Supprimer</a></td>             
                                             </tr>
 					
                                         <?php
@@ -70,7 +70,7 @@ include("actionsManager/actionsModif/ajouteMembre.php");
                                 <form method="POST">
                                 <div class="register-top-grid">
 
-			<h3>Ajouter un membre</h3>
+			<h3>Ajouter un admin</h3>
 
 			<div>
 				<span>Prénom<label> :</label></span>

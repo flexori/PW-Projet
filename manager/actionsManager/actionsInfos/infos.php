@@ -8,6 +8,12 @@
     $getAllAnnonces = $bdd->prepare('SELECT * FROM annonces ORDER BY id');
     $getAllAnnonces->execute(array());
 
+    $getAllMembres = $bdd->prepare('SELECT * FROM users ORDER BY id');
+    $getAllMembres->execute(array());
+
+    $getAllAdmins = $bdd->prepare('SELECT * FROM admins ORDER BY id');
+    $getAllAdmins->execute(array());
+
     $getCountAnnonces = $bdd->prepare('SELECT DISTINCT count(*) as id FROM annonces');
     $getCountAnnonces->execute(array());
 

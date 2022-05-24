@@ -56,7 +56,7 @@ require('actionsManager/actionsInfos/infos.php');
                                     <div class="card-body">Admins</div>
                                     <div class="card-body">Nombre d'admins : <?php print_r($getCountAdmin->fetchColumn()) ; ?></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="list_contacts.php">En savoir plus</a>
+                                        <a class="small text-white stretched-link" href="list_admins.php">En savoir plus</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
