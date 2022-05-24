@@ -32,6 +32,7 @@ if(isset($_POST['validate'])){
                 $_SESSION['prenom'] = $usersInfos['prenom'];
                 $_SESSION['nom'] = $usersInfos['nom'];
                 $_SESSION['mail'] = $usersInfos['mail'];
+                
 
                 //Rediriger l'utilisateur vers la page d'accueil
                 header('Location: ../manager/index.php');

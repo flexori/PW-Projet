@@ -40,6 +40,7 @@ if(isset($_POST['validate'])){
             $_SESSION['prenom'] = $usersInfos['prenom'];
             $_SESSION['nom'] = $usersInfos['nom'];
             $_SESSION['mail'] = $usersInfos['mail'];
+            $_SESSION['head'] = true;
 
 
             header('Location: ../manager/login.php');
