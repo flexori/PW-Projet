@@ -39,8 +39,8 @@ if(isset($_POST['validate'])){
             $_SESSION['nomad'] = $usersInfos['nom'];
             $_SESSION['mailad'] = $usersInfos['mail'];
 
-
-            header('Location: ../manager/index.php');
+            $url = htmlspecialchars("../manager/index.php");
+            echo '<script>window.location = "'.$url.'";</script>';
         }else{
             $errorMsg = "L'utilisateur existe déjà sur le site";
         }

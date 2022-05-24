@@ -39,7 +39,7 @@ if(isset($_SESSION['ad'])){
     <tr>
     <th>Numéro</th>
     <th>Nom</th>
-    <th>Nombre d'annonce dans cette catégorie</th>
+    <th>Nombre d'annonces dans cette catégorie</th>
     <th>Modifier le nom</th>
     <th>Supprimer</th>
     </tr>
@@ -48,7 +48,7 @@ if(isset($_SESSION['ad'])){
     <tr>
     <th>Numéro</th>
     <th>Nom</th>
-    <th>Nombre d'annonce dans cette catégorie</th>
+    <th>Nombre d'annonces dans cette catégorie</th>
     <th>Modifier</th>
     <th>Supprimer</th>
     </tr>
