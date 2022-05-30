@@ -1,13 +1,11 @@
-<html>
-<body onload="window.print()">
-<h1>MES FAVORIS</h1>
 <?php
+include("inc/top.php");
 include("actions/actionsCategorie/allCategories.php");
 require('actions/database.php');
 
 //Récupérer l'identifiant de l'utilisateur
 if(isset($_GET['id']) AND !empty($_GET['id'])){
-    $idOfUser = $_GET['id'];
+    $idOfUser = $_SESSION['id'];
 
 
 
@@ -21,14 +19,14 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
     }
     
 
-    $headers = "From:me\n";
+    $headers = "From:louis.peron.fr@gmail.com\n";
     $headers .= "MIME-version: 1.0\n";
     $headers .= "Content-type: text/html; charset= UTF-8\n";
 
     $getAllFavoris = $bdd->prepare('
-    SELECT DISTINCT annonces.id, favoris.id, titre, description, prix, image, date, id_categorie FROM ( annonces
+    SELECT DISTINCT * FROM ( annonces
     INNER JOIN favoris ON annonces.id = favoris.id_annonce )
-    WHERE annonces.id_user=?
+    WHERE favoris.id_user=7
     GROUP BY annonces.id');
     $getAllFavoris->execute(array($idOfUser));
     $contenu = '<table>';
@@ -41,8 +39,16 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
                         
                 }
                 $contenu .= '</table>';
-    
-                mail(''.$mail, 'Mes favoris', $contenu, $headers);
+                
+                if (mail($mail, 'Mes favoris', $contenu, $headers)){
+
+                    echo 'Votre message a bien été envoyé ';
+
+                }else {
+
+                    echo "Votre message n'a pas pu être envoyé";
+
+                }
 
     }else{
         echo "Aucun favoris trouvé.";
@@ -50,5 +56,3 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
 
 }
 ?>
-</body>
-</html>

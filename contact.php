@@ -1,6 +1,5 @@
 <?php
 include("inc/top.php"); 
-require('actions/actionsUser/demandeDeContact.php'); 
 ?>
 
 <!-- debut de la partie contenu -->
@@ -31,31 +30,40 @@ require('actions/actionsUser/demandeDeContact.php');
 	<?php 
 	if(isset($_SESSION['auth'])){
 		?>
-		<form method="POST">
+		<form method="POST" name="myForm">
 		<div>
 		<span><label>Nom</label></span>
-		<span><input name="userName" type="text" class="textbox"></span>
+		<span><input name="userName" type="text" class="textbox" id="nom"></span>
 		</div>
 		<div>
 		<span><label>Email</label></span>
-		<span><input name="userEmail" type="text" class="textbox"></span>
+		<span><input name="userEmail" type="text" class="textbox" id="mail"></span>
 		</div>
 		<div>
 		<span><label>Téléphone</label></span>
-		<span><input name="userPhone" type="text" class="textbox"></span>
+		<span><input name="userPhone" type="text" class="textbox" id="telephone"></span>
 		</div>
 		<div>
 		<span><label>Message</label></span>
-		<span><textarea name="userMsg"> </textarea></span>
+		<span><textarea name="userMsg" id="msg"> </textarea></span>
 		</div>
 		<div>
-		<span><input type="submit" value="ok" name="validate"></span>
+		<button onclick="return isEmpty()" type="button">Ok</button>
+
 		</div>
 		</form>
 		<?php
 	}
 	?>
-	
+
+	<script type="text/javascript">
+		function isEmpty(){
+if (document.getElementById('nom').value == "" || document.getElementById('mail').value == "" || document.getElementById('telephone').value == "" || document.getElementById('msg').value == "") {
+	alert('Veuillez completer tous les champs...');
+}
+else if (document.getElementById('nom').value != "" && document.getElementById('mail').value != "" && document.getElementById('telephone').value !="" && document.getElementById('msg').value != ""){
+	<?php include("actions/actionsUser/demandeDeContact.php"); ?>}}
+	</script>
 	<!--
 	<script type="text/javascript">
 	function valider(){

@@ -36,8 +36,8 @@ include("actions/actionsUser/addFav.php");
 
 <div class="wish-list">
 <?php
-				$getFav = $bdd->prepare('SELECT favoris.id FROM favoris NATURAL JOIN annonces WHERE id_annonce = ?'); 
-				$getFav->execute(array($_GET['id']));
+				$getFav = $bdd->prepare('SELECT favoris.id FROM favoris WHERE favoris.id_annonce = ? AND favoris.id_user = ?'); 
+				$getFav->execute(array($_GET['id'], $_SESSION['id']));
 				$getFav = $getFav->fetchAll();
 				if(!$getFav AND isset($_SESSION['auth'])){
 				?>

@@ -20,12 +20,12 @@ while($annonce = $getAllAnnonces->fetch()){
 	<h5><?= $annonce['titre']; ?></h5>
 	<img src="images/<?= $annonce['image']; ?>" alt="" height="150" width="260">
 	<p><?= $annonce['description']; ?></p>
+	<p><?= $annonce['prix']; ?> €</p>
 	<div class="btn top"><a href="annonce.php?id=<?= $annonce['id']; ?>">En savoir plus</a></div>
 	</div>
 	<?php
 }
 ?>
-
 
 <div class="clear"></div>
 </div>
@@ -52,6 +52,9 @@ foreach($getAllCategories as $categorie ){
 </div>
 </div>
 <div class="clear"></div>
+<br><br><br>
+<br><br><br><br><br><br>
+
 </div>
 <!-- fin de la partie contenu -->
 <?php

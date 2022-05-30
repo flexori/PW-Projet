@@ -21,7 +21,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
             <h5><?= $favoris['titre']; ?></h5>
             <img src="images/<?= $favoris['image']; ?>" alt="" height="150" width="260">
             <p><?= $favoris['description']; ?></p>
-            <div class="btn top"><a href="annonce.php">Supprimer de mes favoris</a></div>
+            <div class="btn top"><a href="delete_favoris.php?id=<?= $favoris['id']; ?>">Supprimer de mes favoris</a></div>
             </div>
             <?php
             
