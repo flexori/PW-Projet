@@ -19,9 +19,11 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
     }
     
 
-    $headers = "From:louis.peron.fr@gmail.com\n";
-    $headers .= "MIME-version: 1.0\n";
-    $headers .= "Content-type: text/html; charset= UTF-8\n";
+
+
+    $headers[] = 'MIME-Version: 1.0';
+     $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
 
     $getAllFavoris = $bdd->prepare('
     SELECT DISTINCT * FROM ( annonces
@@ -39,7 +41,7 @@ if(isset($_GET['id']) AND !empty($_GET['id'])){
                         
                 }
                 $contenu .= '</table>';
-                
+                ini_set("sendmail_from","louis.peron.fr@gmail.com"); 
                 if (mail($mail, 'Mes favoris', $contenu, $headers)){
 
                     echo 'Votre message a bien été envoyé ';

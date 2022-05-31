@@ -1,5 +1,6 @@
 <?php
 include("inc/top.php"); 
+include("actions/actionsUser/demandeDeContact.php"); 
 ?>
 
 <!-- debut de la partie contenu -->
@@ -27,6 +28,7 @@ include("inc/top.php");
 	<div class="contact-form">
 	<h3>Nous écrire</h3>
 	<br>
+
 	<?php 
 	if(isset($_SESSION['auth'])){
 		?>
@@ -45,10 +47,10 @@ include("inc/top.php");
 		</div>
 		<div>
 		<span><label>Message</label></span>
-		<span><textarea name="userMsg" id="msg"> </textarea></span>
+		<span><input name="userMsg" type="text" class="textbox" id="msg"></span>
 		</div>
 		<div>
-		<button onclick="return isEmpty()" type="button">Ok</button>
+		<input type="submit" name="valider" value="Valider" onclick=isEmpty()/></p>
 
 		</div>
 		</form>
@@ -58,27 +60,35 @@ include("inc/top.php");
 
 	<script type="text/javascript">
 		function isEmpty(){
-if (document.getElementById('nom').value == "" || document.getElementById('mail').value == "" || document.getElementById('telephone').value == "" || document.getElementById('msg').value == "") {
-	alert('Veuillez completer tous les champs...');
-}
-else if (document.getElementById('nom').value != "" && document.getElementById('mail').value != "" && document.getElementById('telephone').value !="" && document.getElementById('msg').value != ""){
-	<?php include("actions/actionsUser/demandeDeContact.php"); ?>}}
-	</script>
-	<!--
-	<script type="text/javascript">
-	function valider(){
-		if(document.formSaisie.userName.value != "", document.formSaisie.userEmail.value != "", document.formSaisie.userPhone.value != "", document.formSaisie.userMsg.value != "") { 
-			
-			alert("Votre demande a bien été enregistrée.");
-			return true;
+			var name = document.forms["myForm"]["userName"];   
+			var mail = document.forms["myForm"]["userEmail"];   
+			var phone = document.forms["myForm"]["userPhone"];   
+			var msg = document.forms["myForm"]["userMsg"];  
+
+			if (name.value == "") { 
+        		alert("Mettez votre nom."); 
+        		name.focus(); 
+        		return false; 
+    		}if (mail.value == "") { 
+        		alert("Mettez votre mail."); 
+        		mail.focus(); 
+        		return false; 
+    		}if (phone.value == "") { 
+        		alert("Mettez votre téléphone."); 
+        		phone.focus(); 
+        		return false; 
+    		}if (msg.value == "") { 
+        		alert("Mettez votre message."); 
+        		msg.focus(); 
+        		return false; 
+    		}
+
+			return true      
 		}
-		else {
-			alert("Veuillez completer tous les champs.");
-			return false;
-		}
-	}
+
+
 	</script>
-	-->
+
 	<?php if(isset($errorMsg)){ echo '<p>'.$errorMsg.'</p>'; } ?>
 	</div>
 	</div>				

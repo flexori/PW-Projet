@@ -4,12 +4,13 @@ if(session_id() == '') {
 }
 require('actions/database.php');
 
-if(isset($_SESSION['auth'])){
+
+if(isset($_SESSION['auth']) ){
     
-        
+    if(isset($_POST['valider'])){
         //Vérifier si l'user a bien complété tous les champs
     
-            
+            if(!empty($_POST['userName']) AND !empty($_POST['userEmail']) AND !empty($_POST['userPhone']) AND !empty($_POST['userMsg'])){
             //Les données de l'user
             $user_nom = htmlspecialchars($_POST['userName']);
             $user_mail = htmlspecialchars($_POST['userEmail']);
@@ -22,8 +23,13 @@ if(isset($_SESSION['auth'])){
             
             $errorMsg = "Votre demande a bien été envoyée.";
     
+            }else{
+                $errorMsg = "Veuillez remplir tous les champs.";
+            }
         
-    
+        }
 }else{
     $errorMsg = "Veuillez vous connecter pour envoyer une demande de contact.";
 }
+
+?>
